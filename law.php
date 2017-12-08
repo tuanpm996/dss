@@ -21,11 +21,11 @@ function CF1law($law) {
         $cfIf = 1;
         $numberDK = 4;
         $cf = $law[6];
-        for ($i = 0; $i <= $numberDK; $i++) {
-            if ($law[$i] == NULL) {
+        for ($i = 0; $i <= 4; $i++) {
+            if ($law[$i] == 0) {
                 continue;
             } else {
-                if (array_key_exists($law[$i], $GLOBALS['z'])) {
+                if ($law[$i] != $GLOBALS['z'][$i]) {
                     $cfIf = 0;
                     break;
                 }
@@ -64,9 +64,10 @@ function CFlaws($ruleLaws) {
 function analysis($finance, $gender_ratio, $major, $enviroment, $mark){
     $law = array();
     $conn = connectDB();
+    $a = "fdfdf" . $finance;
     $sql = "SELECT *
-    FROM rule
-    WHERE tai_chinh = $finance OR moi_truong = $enviroment OR gioi_tinh =$gender_ratio OR nganh = $major OR diem = $mark
+    FROM rule_copy
+    WHERE tai_chinh = " . $finance . " OR moi_truong =" .  $enviroment . " OR gioi_tinh =" . $gender_ratio .  " OR nganh =" . $major . " OR diem = " . $mark . "
     GROUP BY id
     ORDER BY truong ASC";
 
@@ -77,12 +78,12 @@ function analysis($finance, $gender_ratio, $major, $enviroment, $mark){
         echo "No data";
         return 0;
     }
-
     $existMajor = array(); // kiểm tra mỗi trường được xét 1 lần
     $ruleLaws = array(); // chứa tất cả luật 1 trường
     $majors = array();
     $CFmajor = array(); //chứa từng ngành riêng biệt
     $top3 = array(); // chứa top 3 ngành
+
     while($row = $result->fetch_assoc()){
         ini_set('memory_limit', '-1');
         $law = array($row["tai_chinh"], $row["moi_truong"], $row["gioi_tinh"], $row["nganh"], $row['diem'],$row["truong"], $row["do_tin_cay"]);
@@ -103,8 +104,6 @@ function analysis($finance, $gender_ratio, $major, $enviroment, $mark){
     }
 
     $majors[$law["5"]] = $ruleLaws;
-//    print_r(sizeof($majors));
-    //Trong mảng $marjors bây giờ mỗi phần tử là 1 mảng (1 mảng này là 1 mảng mà mỗi phần tử của mảng con này là 1 luật)
     foreach ($majors as $key => $value) {
         $CFmajor[$key] = CFlaws($value);
     }
@@ -120,12 +119,13 @@ function analysis($finance, $gender_ratio, $major, $enviroment, $mark){
        $conn = connectDB();
        $conn->set_charset("utf8");
        $result = $conn->query($sql);
+
        while ($row = $result->fetch_assoc()) {
            echo '<div class="col-md-4 col-sm-4 col-xs-12 result" style="background-color: black">
                     <h3>'.$row["ten"].'</h3>
                     <p>'.$row["gioi_thieu"].'</p>
                     <span>Trang web của trường: </span><a target="blank" href="'.$row["website"].'">'.$row["website"].'</a>
                 </div>';
-         }
+        }
     }
 }
