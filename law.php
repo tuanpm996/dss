@@ -120,11 +120,16 @@ function analysis($finance, $gender_ratio, $major, $enviroment, $mark){
        $result = $conn->query($sql);
 
        while ($row = $result->fetch_assoc()) {
-           echo '<div class="col-md-4 col-sm-4 col-xs-12 result" style="background-color: black">
-                    <h3>'.$row["ten"].'</h3>
-                    <p>'.$row["gioi_thieu"].'</p>
-                    <span>Trang web của trường: </span><a target="blank" href="'.$row["website"].'">'.$row["website"].'</a>
-                </div>';
+           echo '
+            <div class="col-sm-4">
+                <div class="col-sm-10 list-image">
+                    <span class="title-school">'.$row["ten"].'</span>
+                    <div class="hr-div">'.$row["gioi_thieu"].'</div>
+                    <span class="title-web">Trang web của trường: </span>
+                    <a style="color: red" target="_blank" href="'.$row["website"].'">http://vnuf.edu.vn/</a>
+                </div>
+            </div>
+            ';
         }
     }
 }

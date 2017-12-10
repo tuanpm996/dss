@@ -9,7 +9,6 @@
 		border: 0;
 		font-size: 100%;
 		font: inherit;
-		vertical-align: baseline;
 	}
 
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -166,21 +165,10 @@
 /* BG */
 
 	#bg {
-		-moz-animation: bg 60s linear infinite;
-		-webkit-animation: bg 60s linear infinite;
-		-ms-animation: bg 60s linear infinite;
-		animation: bg 60s linear infinite;
-		-moz-backface-visibility: hidden;
-		-webkit-backface-visibility: hidden;
-		-ms-backface-visibility: hidden;
-		backface-visibility: hidden;
-		-moz-transform: translate3d(0,0,0);
-		-webkit-transform: translate3d(0,0,0);
-		-ms-transform: translate3d(0,0,0);
-		transform: translate3d(0,0,0);
+
 	/* Set your background with this */
 
-		background: #348cb2 url("images/bg1.jpg") bottom left;
+		background: #348cb2 url("images/4.jpg") bottom left;
 		background-repeat: repeat-x;
 		height: 100%;
 		left: 0;
@@ -1035,11 +1023,16 @@
 		} }
 
 /* phần mới thêm vào */
+.header-text{
+	text-shadow: 1 1 5px #000000;
+	margin-right: 42px;
+	margin-top: -75px;
+	text-shadow: 0 0 0.2px #000000, 0 0 5px #000000;
+}
 .title-select{
-	color: #660000;
-	text-shadow: 0 0 1px #000000, 0 0 5px #FFFFFF;
+	color: #000000;
 	font-weight: 900;
-	font-size: 20px;
+	font-size: 25px;
 
 }
 .list-option{
@@ -1053,4 +1046,34 @@
 .font-select{
 	font-size: 16px !important;
 	font-weight: 900 !important;
+}
+.list-image{
+	background: #B0E2FF;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 5px;
+    margin: 15px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    display: table-cell;
+    height: 600px;
+		overflow-y:scroll;
+}
+.list-image p{
+	font-size: 20px !important;
+	font-weight: 400;
+	color: #330000 !important;
+}
+.title-school{
+	font-size: 25px; color: #003300; font-weight: 900;
+}
+.hr-div{
+	border-bottom: 2px solid black; margin-left: 15px;
+	/*min-height: 400px;*/
+	color: black;
+
+}
+.title-web{
+	color: black; font-weight: bold; font-size: 15px
 }

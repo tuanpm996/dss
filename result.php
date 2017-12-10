@@ -22,21 +22,35 @@
     <link rel="stylesheet" href="assets/css/main.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+    <script>
+      $('.selectpicker').selectpicker({
+            style: 'btn-info',
+            size: 5
+        });
+    </script>
+
   </head>
   <body class="loading">
     <div id="wrapper">
       <div id="bg"></div>
       <div id="overlay"></div>
       <div id="main">
-        <header id="header">
-          <h1 style="text-shadow: 1 1 5px #000000;">Kết quả</h1>
-            <?php
-              analysis($finance, $gender_ratio, $major, $enviroment, $mark);
-            ?>
-        </header>
-        <footer id="footer">
-          <span class="copyright">&copy; Sản phẩm của <b style="font-weight: bolder;">nhóm 1</b>.</span>
-        </footer>
+      <a href="index.php"><button type="button" style="margin-top: -750px;" class="btn btn-primary btn-lg">Quay lại</button></a>
+        <!-- Header -->
+          <header id="header">
+            <h1 class="header-text">Kết quả</h1>
+            <div class="col-sm-12" style="display: table;">
+              <?php
+                analysis($finance, $gender_ratio, $major, $enviroment, $mark);
+              ?>
+            </div>
+          </header>
+
+        <!-- Footer -->
+          <footer id="footer">
+            <span class="copyright">&copy; Sản phẩm của <b style="font-weight: bolder;">nhóm 1</b>.</span>
+          </footer>
+
       </div>
     </div>
     <script>
